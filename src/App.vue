@@ -101,6 +101,7 @@ export default {
     setTimeout(() => {
       this.pages = [
         null,
+        'https://storage.launion.gov.ph/lufa/3MB/00COVER.gif',
         'https://storage.launion.gov.ph/lufa/3MB/01ABTCOVER-1ST-PAGE-3MB.gif',
         'https://storage.launion.gov.ph/lufa/3MB/02ABTCOVER-2ND-PAGE-3MB.gif',
         'https://storage.launion.gov.ph/lufa/3MB/03TOC-1ST-PAGE-3MB.gif',
@@ -200,12 +201,10 @@ export default {
         'https://storage.launion.gov.ph/lufa/3MB/97TIER-5-6_4.gif',
         'https://storage.launion.gov.ph/lufa/3MB/99TIER-1_motul.gif',
         'https://storage.launion.gov.ph/lufa/3MB/100Back%20Cover.jpg',
-        'https://storage.launion.gov.ph/lufa/3MB/CALENDAR-1ST-PAGE-copy.gif',
-        'https://storage.launion.gov.ph/lufa/3MB/CALENDAR-2ND-PAGE-copy.gif',
-        'https://storage.launion.gov.ph/lufa/3MB/Mutia-Ti-La-Union---Cover.gif',
       ]
       this.pagesHiRes = [
         null,
+        'https://storage.launion.gov.ph/lufa/3MB/00COVER.gif',
         'https://storage.launion.gov.ph/lufa/3MB/01ABTCOVER-1ST-PAGE-3MB.gif',
         'https://storage.launion.gov.ph/lufa/3MB/02ABTCOVER-2ND-PAGE-3MB.gif',
         'https://storage.launion.gov.ph/lufa/3MB/03TOC-1ST-PAGE-3MB.gif',
@@ -305,9 +304,6 @@ export default {
         'https://storage.launion.gov.ph/lufa/3MB/97TIER-5-6_4.gif',
         'https://storage.launion.gov.ph/lufa/3MB/99TIER-1_motul.gif',
         'https://storage.launion.gov.ph/lufa/3MB/100Back%20Cover.jpg',
-        'https://storage.launion.gov.ph/lufa/3MB/CALENDAR-1ST-PAGE-copy.gif',
-        'https://storage.launion.gov.ph/lufa/3MB/CALENDAR-2ND-PAGE-copy.gif',
-        'https://storage.launion.gov.ph/lufa/3MB/Mutia-Ti-La-Union---Cover.gif',
       ]
     }, 1)
 
