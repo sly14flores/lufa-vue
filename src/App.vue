@@ -3,7 +3,14 @@
 		id="app"
 		:class="{ 'has-mouse': hasMouse }"
 		@touchstart="hasMouse = false">
-		<div style="background-color: transparent; margin: 20px 0 20px 0">
+		<!-- <Ribbon /> -->
+		<div
+			style="
+				background-color: white;
+				margin: 20px 0 20px 0;
+				z-index: 1;
+				padding-bottom: 2rem;
+			">
 			<Flipbook
 				class="flipbook"
 				:pages="pages"
