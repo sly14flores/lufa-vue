@@ -83,4 +83,12 @@ a {
   display: flex;
   justify-items: center;
   align-items: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .flipbook .viewport {
+    background-color: aqua;
+    width: inherit;
+    height: inherit;
+  }
 }/*# sourceMappingURL=style.css.map */
