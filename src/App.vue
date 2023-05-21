@@ -1,75 +1,71 @@
 <template style="overflow: hidden">
+	<div id="app" class="wrapper">
+		<div class="preloader" v-show="isLoading">
+			<!-- <div class="loadingtitle">LOADING</div> -->
+			<div class="preloader-progress">
+				<img class="dot" src="../public/images/flower.png" alt="flower" />
+				<img class="dot" src="../public/images/flower.png" alt="flower" />
+				<img class="dot" src="../public/images/flower.png" alt="flower" />
+				<img class="dot" src="../public/images/flower.png" alt="flower" />
+				<img class="dot" src="../public/images/flower.png" alt="flower" />
+			</div>
+		</div>
 
-	<div class="preloader" v-show='isLoading'>
-		<!-- <div class="loadingtitle">LOADING</div> -->
-		<div class="preloader-progress">
-			<img class="dot" src="../public/images/flower.png" alt="flower" />
-			<img class="dot" src="../public/images/flower.png" alt="flower" />
-			<img class="dot" src="../public/images/flower.png" alt="flower" />
-			<img class="dot" src="../public/images/flower.png" alt="flower" />
-			<img class="dot" src="../public/images/flower.png" alt="flower" />
+		<img
+			src="https://storage.launion.gov.ph/lufa/3MB/00COVER.gif"
+			alt="cover"
+			class="cover"
+			v-show="!buttonHidden"
+			@click="showModal()" />
+		<!-- <div>adasdas</div> -->
+		<div class="modal-vue">
+			<!-- overlay -->
+			<div class="overlay" v-if="modalVue" v-on:click="showModal()"></div>
+			<!-- modal -->
+			<div class="modal" v-if="modalVue">
+				<div :class="{ 'has-mouse': hasMouse }" @touchstart="hasMouse = false">
+					<Flipbook
+						class="flipbook"
+						:pages="pages"
+						:pagesHiRes="pagesHiRes"
+						:startPage="pageNum"
+						:drag-to-flip="dragToFlip"
+						:click-to-zoom="clickToZoom"
+						v-slot="flipbook"
+						ref="flipbook"
+						@flip-left-start="onFlipLeftStart"
+						@flip-left-end="onFlipLeftEnd"
+						@flip-right-start="onFlipRightStart"
+						@flip-right-end="onFlipRightEnd"
+						@zoom-start="onZoomStart"
+						@zoom-end="onZoomEnd">
+						<div class="action-bar">
+							<button class="btn close" @click="closeModal()">x</button>
+							<left-icon
+								class="btn left"
+								:class="{ disabled: !flipbook.canFlipLeft }"
+								@click="flipbook.flipLeft" />
+							<plus-icon
+								class="btn plus"
+								:class="{ disabled: !flipbook.canZoomIn }"
+								@click="flipbook.zoomIn" />
+							<span class="page-num">
+								Page {{ flipbook.page }} of {{ flipbook.numPages }}
+							</span>
+							<minus-icon
+								class="btn minus"
+								:class="{ disabled: !flipbook.canZoomOut }"
+								@click="flipbook.zoomOut" />
+							<right-icon
+								class="btn right"
+								:class="{ disabled: !flipbook.canFlipRight }"
+								@click="flipbook.flipRight" />
+						</div>
+					</Flipbook>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div
-		id="app"
-		:class="{ 'has-mouse': hasMouse }"
-		@touchstart="hasMouse = false">
-		<!-- <Ribbon /> -->
-		<!-- <div
-			style="
-				background-color: white;
-				margin: 20px 0 20px 0;
-				z-index: 1;
-				padding-bottom: 2rem;
-			"> -->
-
-		<Flipbook
-			class="flipbook"
-			:pages="pages"
-			:pagesHiRes="pagesHiRes"
-			:startPage="pageNum"
-			:drag-to-flip="dragToFlip"
-			:click-to-zoom="clickToZoom"
-			v-slot="flipbook"
-			ref="flipbook"
-			@flip-left-start="onFlipLeftStart"
-			@flip-left-end="onFlipLeftEnd"
-			@flip-right-start="onFlipRightStart"
-			@flip-right-end="onFlipRightEnd"
-			@zoom-start="onZoomStart"
-			@zoom-end="onZoomEnd">
-			<div class="action-bar">
-				<left-icon
-					class="btn left"
-					:class="{ disabled: !flipbook.canFlipLeft }"
-					@click="flipbook.flipLeft" />
-				<plus-icon
-					class="btn plus"
-					:class="{ disabled: !flipbook.canZoomIn }"
-					@click="flipbook.zoomIn" />
-				<span class="page-num">
-					Page {{ flipbook.page }} of {{ flipbook.numPages }}
-				</span>
-				<minus-icon
-					class="btn minus"
-					:class="{ disabled: !flipbook.canZoomOut }"
-					@click="flipbook.zoomOut" />
-				<right-icon
-					class="btn right"
-					:class="{ disabled: !flipbook.canFlipRight }"
-					@click="flipbook.flipRight" />
-			</div>
-		</Flipbook>
-	</div>
-	<p class="credit">
-		<ul class="foot">
-			<li>sadd</li>
-			<li>sadd</li>
-			<li>sadd</li>
-			<li>sadd</li>
-		</ul>
-	</p>
-	<!-- </div> -->
 </template>
 
 <script>
@@ -82,8 +78,6 @@ import MinusIcon from "vue-material-design-icons/MinusCircle";
 import Flipbook from "flipbook-vue";
 import Ribbon from "./Ribbon";
 
-
-
 export default {
 	components: { Flipbook, LeftIcon, RightIcon, PlusIcon, MinusIcon, Ribbon },
 	data() {
@@ -94,7 +88,9 @@ export default {
 			pageNum: null,
 			dragToFlip: true,
 			clickToZoom: false,
-			isLoading:true
+			isLoading: true,
+			modalVue: false,
+			buttonHidden: false,
 		};
 	},
 	methods: {
@@ -122,17 +118,24 @@ export default {
 			const n = parseInt(window.location.hash.slice(1), 10);
 			if (isFinite(n)) this.pageNum = n;
 		},
+		showModal() {
+			this.modalVue = !this.modalVue;
+			this.buttonHidden = true;
+		},
+		closeModal() {
+			this.modalVue = !this.modalVue;
+			this.buttonHidden = false;
+		},
 	},
 	mounted() {
-
 		$(window).on("load", () => {
-      $(".preloader")
-        .delay(500)
-        .fadeOut("slow", () => {
-          this.isLoading = false;
-          $("body").css("overflow", "auto");
-        });
-    });
+			$(".preloader")
+				.delay(500)
+				.fadeOut("slow", () => {
+					this.isLoading = false;
+					$("body").css("overflow", "auto");
+				});
+		});
 
 		window.addEventListener("keydown", (ev) => {
 			const flipbook = this.$refs.flipbook;
@@ -358,6 +361,5 @@ export default {
 		window.addEventListener("hashchange", this.setPageFromHash);
 		this.setPageFromHash();
 	},
-	
 };
 </script>

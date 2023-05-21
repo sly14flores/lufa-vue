@@ -9,12 +9,58 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  display: flex;
+  display: hidden;
   flex-direction: column;
   align-items: center;
   background-image: linear-gradient(to bottom, rgb(136, 21, 175), rgb(100, 16, 211));
   color: #ccc;
   overflow: hidden;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.cover {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  width: 475px;
+  height: 620px;
+  margin: auto;
+  opacity: 1;
+}
+
+.cover:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.modal-vue .overlay {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, rgb(136, 21, 175), rgb(100, 16, 211));
+  transition: opacity 0.3s ease;
+}
+
+.modal-vue .modal {
+  position: relative;
+  z-index: 9999;
+  margin: 0px auto;
+  padding: 20px 30px;
+  transition: all 0.3s ease;
+}
+
+.modal-vue .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 a {
@@ -70,14 +116,6 @@ a {
 
 .flipbook .bounding-box {
   box-shadow: 0 0 20px #000;
-}
-
-.credit {
-  width: 100%;
-  font-size: 12px;
-  line-height: 20px;
-  margin: 0px;
-  background-color: rgba(204, 204, 204, 0.6);
 }
 
 .flipbook-wrap {
