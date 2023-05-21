@@ -11,14 +11,14 @@
 			</div>
 		</div>
 
-		<img
-			src="https://storage.launion.gov.ph/lufa/3MB/00COVER.gif"
-			alt="cover"
-			class="cover"
-			v-show="!buttonHidden"
-			@click="showModal()" />
 		<!-- <div>adasdas</div> -->
 		<div class="modal-vue">
+			<img
+				src="https://storage.launion.gov.ph/lufa/3MB/00COVER.gif"
+				alt="cover"
+				class="cover"
+				v-show="!buttonHidden"
+				@click="showModal()" />
 			<!-- overlay -->
 			<div class="overlay" v-if="modalVue" v-on:click="showModal()"></div>
 			<!-- modal -->
