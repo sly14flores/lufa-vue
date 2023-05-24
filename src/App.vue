@@ -202,7 +202,7 @@ export default {
         'https://storage.launion.gov.ph/lufa/3MB/97TIER-5-6_4.gif',
         'https://storage.launion.gov.ph/lufa/3MB/99TIER-1_motul.gif',
         'https://storage.launion.gov.ph/lufa/3MB/100A.jpg',
-        'https://storage.launion.gov.ph/lufa/3MB/100Back%20Cover.jpg',
+        'https://storage.launion.gov.ph/lufa/3MB/100Back Page.gif',
       ]
       this.pagesHiRes = [
         null,
@@ -307,7 +307,7 @@ export default {
         'https://storage.launion.gov.ph/lufa/3MB/97TIER-5-6_4.gif',
         'https://storage.launion.gov.ph/lufa/3MB/99TIER-1_motul.gif',
         'https://storage.launion.gov.ph/lufa/3MB/100A.jpg',
-        'https://storage.launion.gov.ph/lufa/3MB/100Back%20Cover.jpg',
+        'https://storage.launion.gov.ph/lufa/3MB/100Back Page.gif',
       ]
     }, 1)
 
