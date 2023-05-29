@@ -10,6 +10,7 @@
         <img class="dot" src="../public/images/flower.png" alt="flower" />
       </div>
     </div>
+
     <div class="cover-wrap">
       <div class="cover-item"></div>
       <div class="cover-item">
